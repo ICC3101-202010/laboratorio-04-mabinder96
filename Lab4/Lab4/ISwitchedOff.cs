@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Lab4
 {
+    //Creo la interface ISwitchedOff, la que tiene un método que permite que las máquinas se apaguen
     interface ISwitchedOff
     {
-
         void SwitchedOff();
     }
 }

@@ -8,21 +8,25 @@ namespace Lab4
 {
     class Packing : Machine
     {
+        //Creo el constructor de la clase Packing, el cual hereda los atributos de la clase astracta máquina
         public Packing()
         {
             memory = 100; ;
             use = 0;
-            name = "Empaque";
-            
+            name = "Empaque";  
         }
+
+        //Uso el método NewMemory() heredado de la clase máquina, el cual me permite reiniciar la memoria
         public override int NewMemory()
         {
             memory += 100;
             Console.WriteLine("La nueva memoria de empaque es: " + memory);
             return memory;
         }
+
+        //Creo el método Pack(), donde va a funcionar el proceso utilizando un número Random gastar memoria
         static Random rnd = new Random();
-        public override int NewUse()
+        public  int Pack()
         {
             use = rnd.Next(45, 65);
             if (use >= memory)
@@ -37,6 +41,8 @@ namespace Lab4
             }
             return memory;
         }
+
+        //Uso el método GetMemory() heredado de la clase máquina, el cual me retorna la memoria disponible
         public override int GetMemory()
         {
             return memory;

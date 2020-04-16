@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab4
 {
+    //Creo la clase abstracta Machine, de la cual van a heredar los procesos sus atributos y métodos
     abstract class Machine
     {
         protected int memory;
@@ -14,7 +15,5 @@ namespace Lab4
         public string Name { get => name; set => name = value; }
         public abstract int NewMemory();
         public abstract int GetMemory();
-        public abstract int NewUse();
-
     }
 }

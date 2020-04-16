@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab4
 {
+    //Creo el constructor de la clase QualityCheck, el cual hereda los atributos de la clase astracta máquina
     class QualityCheck : Machine
     {
         public QualityCheck()
@@ -14,14 +15,18 @@ namespace Lab4
             use = 0;
             name = "Verificación de calidad";
         }
+
+        //Uso el método NewMemory() heredado de la clase máquina, el cual me permite reiniciar la memoria
         public override int NewMemory()
         {
             memory += 80;
             Console.WriteLine("La nueva memoria de verificación de calidad es: " + memory);
             return memory;
         }
+
+        //Creo el método Check(), donde va a funcionar el proceso utilizando un número Random gastar memoria
         static Random rnd = new Random();
-        public override int NewUse()
+        public  int Check()
         {
             use = rnd.Next(25, 35);
             if (use >= memory)
@@ -36,6 +41,8 @@ namespace Lab4
             }
             return memory;
         }
+
+        //Uso el método GetMemory() heredado de la clase máquina, el cual me retorna la memoria disponible
         public override int GetMemory()
         {
             return memory;

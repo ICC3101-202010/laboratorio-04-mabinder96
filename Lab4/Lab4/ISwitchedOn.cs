@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Lab4
 {
+    //Creo la interface ISwitchedOn, la que tiene un método que permite que las máquinas se prendan
+
     interface ISwitchedOn
     {
-
         void SwitchedOn();
-
     }
 }
