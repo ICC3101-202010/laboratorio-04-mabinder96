@@ -13,7 +13,7 @@ namespace Lab4
         protected int use;
         protected string name;
         public string Name { get => name; set => name = value; }
-        public abstract int NewMemory();
+        public abstract int NewMemory(string name);
         public abstract int GetMemory();
     }
 }

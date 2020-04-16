@@ -17,7 +17,7 @@ namespace Lab4
         }
 
         //Uso el método NewMemory() heredado de la clase máquina, el cual me permite reiniciar la memoria
-        public override int NewMemory()
+        public override int NewMemory(string name)
         {
             memory += 100;
             Console.WriteLine("La nueva memoria de empaque es: " + memory);
@@ -28,7 +28,7 @@ namespace Lab4
         static Random rnd = new Random();
         public  int Pack()
         {
-            use = rnd.Next(45, 65);
+            use = rnd.Next(45, 55);
             if (use >= memory)
             {
                 Console.WriteLine("Se ha usado: " + memory + " de la memoria disponible de empaque. Ahora queda: 0");

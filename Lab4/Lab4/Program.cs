@@ -33,18 +33,36 @@ namespace Lab4
             int i = 10;
             while (i>0) 
             {
-                reception.Receive();
-                storage.Store();
-                objectAssembly.ObjectAssemble();
-                qualityCheck.Check();
-                packing.Pack();
-                centralcomputerfirst.Rebbot();
-                Thread.Sleep(6000);
+                if (reception.Receive() == 0) //Si la memoria se acaba
+                {
+                    centralcomputerfirst.Message(reception.Name); //El computador central recibe la información de la máquina
+                    centralcomputerfirst.Rebbot(); //Y e da la opción al trabajador de reiniciar alguna máquina
+                }
+                if (storage.Store() == 0)
+                {
+                    centralcomputerfirst.Message(storage.Name);
+                    centralcomputerfirst.Rebbot();
+                }
+                if (objectAssembly.ObjectAssemble() == 0)
+                {
+                    centralcomputerfirst.Message(objectAssembly.Name);
+                    centralcomputerfirst.Rebbot();
+                }
+                if (qualityCheck.Check() == 0)
+                {
+                    centralcomputerfirst.Message(qualityCheck.Name);
+                    centralcomputerfirst.Rebbot();
+                }
+                if (packing.Pack() == 0)
+                {
+                    centralcomputerfirst.Message(packing.Name);
+                    centralcomputerfirst.Rebbot();
+                }
                 Console.WriteLine("\n");
                 i -= 1;
             }
 
-            //Cuando las máquinas cumplen el ciclo de trabajo, que en este caso es 1 minuto, apago las máquinas
+            //Cuando las máquinas cumplen el ciclo de trabajo, que en este caso, son 10 rondas, apago las máquinas
             centralcomputerfirst.SwitchedOff();
         }
     }

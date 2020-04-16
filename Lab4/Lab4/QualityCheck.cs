@@ -17,7 +17,7 @@ namespace Lab4
         }
 
         //Uso el método NewMemory() heredado de la clase máquina, el cual me permite reiniciar la memoria
-        public override int NewMemory()
+        public override int NewMemory(string name)
         {
             memory += 80;
             Console.WriteLine("La nueva memoria de verificación de calidad es: " + memory);
