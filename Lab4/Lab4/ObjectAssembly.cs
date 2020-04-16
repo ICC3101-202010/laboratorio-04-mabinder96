@@ -9,26 +9,36 @@ namespace Lab4
     class ObjectAssembly : Machine
     {
         static Random rnd = new Random();
-        public ObjectAssembly(int memory, int use)
+        public ObjectAssembly()
         {
-            memory = rnd.Next(50, 200);
+            memory = 200;
             use = 0;
+            name = "Ensamblaje del objeto";
         }
-
         public override int NewMemory()
         {
-            memory += rnd.Next(50, 100);
+            memory += 200;
+            Console.WriteLine("La nueva memoria de ensamblaje del objeto es: " + memory);
             return memory;
         }
         public override int NewUse()
         {
-            use += rnd.Next(0, 25);
-            return use;
+            use = rnd.Next(50, 60);
+            if (use >= memory)
+            {
+                Console.WriteLine("Se ha usado: " + memory + " de la memoria disponible de ensamblaje del objeto. Ahora queda: 0");
+                memory = 0;
+            }
+            else
+            {
+                memory -= use;
+                Console.WriteLine("Se ha usado: " + use + " de la memoria disponible de ensamblaje del objeto. Ahora queda: " + memory);
+            }
+            return memory;
         }
-
-        public void ObjectAssemble(int use)
+        public override int GetMemory()
         {
-            memory -= use;
+            return memory;
         }
     }
 }

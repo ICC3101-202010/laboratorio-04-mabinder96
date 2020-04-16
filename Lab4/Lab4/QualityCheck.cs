@@ -8,27 +8,37 @@ namespace Lab4
 {
     class QualityCheck : Machine
     {
-        static Random rnd = new Random();
-        public QualityCheck(int memory, int use)
+        public QualityCheck()
         {
-            memory = rnd.Next(50, 200); ;
+            memory = 80;
             use = 0;
+            name = "Verificación de calidad";
         }
-
         public override int NewMemory()
         {
-            memory += rnd.Next(50, 100);
+            memory += 80;
+            Console.WriteLine("La nueva memoria de verificación de calidad es: " + memory);
             return memory;
         }
+        static Random rnd = new Random();
         public override int NewUse()
         {
-            use += rnd.Next(0, 25);
-            return use;
+            use = rnd.Next(25, 35);
+            if (use >= memory)
+            {
+                Console.WriteLine("Se ha usado: " + memory + " de la memoria disponible de verificación de calidad. Ahora queda: 0");
+                memory = 0;
+            }
+            else
+            {
+                memory -= use;
+                Console.WriteLine("Se ha usado: " + use + " de la memoria disponible de verificación de calidad. Ahora queda: " + memory);
+            }
+            return memory;
         }
-
-        public void Check(int use)
+        public override int GetMemory()
         {
-            memory -= use;
+            return memory;
         }
     }
 }

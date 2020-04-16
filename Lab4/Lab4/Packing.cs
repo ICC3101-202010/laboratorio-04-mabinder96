@@ -8,28 +8,38 @@ namespace Lab4
 {
     class Packing : Machine
     {
-        static Random rnd = new Random();
-        public Packing(int memory, int use)
+        public Packing()
         {
-            memory = rnd.Next(50, 200); ;
+            memory = 100; ;
             use = 0;
+            name = "Empaque";
+            
         }
-
         public override int NewMemory()
         {
-            memory += rnd.Next(50, 100);
+            memory += 100;
+            Console.WriteLine("La nueva memoria de empaque es: " + memory);
             return memory;
         }
-        public override int  NewUse()
+        static Random rnd = new Random();
+        public override int NewUse()
         {
-            use += rnd.Next(0, 25);
-            return use;
+            use = rnd.Next(45, 65);
+            if (use >= memory)
+            {
+                Console.WriteLine("Se ha usado: " + memory + " de la memoria disponible de empaque. Ahora queda: 0");
+                memory = 0;
+            }
+            else
+            {
+                memory -= use;
+                Console.WriteLine("Se ha usado: " + use + " de la memoria disponible de empaque. Ahora queda: " + memory);
+            }
+            return memory;
         }
-        
-        
-        public void Pack(int use)
+        public override int GetMemory()
         {
-            memory -= use;
+            return memory;
         }
     }
 }

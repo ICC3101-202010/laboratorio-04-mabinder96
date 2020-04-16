@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CentralComputer.cs" />
+    <Compile Include="IRebbot.cs" />
+    <Compile Include="ISwitchedOff.cs" />
     <Compile Include="ISwitchedOn.cs" />
     <Compile Include="Machine.cs" />
     <Compile Include="ObjectAssembly.cs" />

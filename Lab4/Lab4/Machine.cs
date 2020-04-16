@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace Lab4
 {
-    abstract class  Machine
+    abstract class Machine
     {
         protected int memory;
         protected int use;
-
+        protected string name;
+        public string Name { get => name; set => name = value; }
         public abstract int NewMemory();
+        public abstract int GetMemory();
         public abstract int NewUse();
 
     }

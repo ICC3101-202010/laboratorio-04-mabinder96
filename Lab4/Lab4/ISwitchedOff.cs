@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Lab4
 {
-    interface ISwitchedOn
+    interface ISwitchedOff
     {
 
-        void SwitchedOn();
-
+        void SwitchedOff();
     }
 }

@@ -8,27 +8,37 @@ namespace Lab4
 {
     class Storage : Machine
     {
-        static Random rnd = new Random();
-        public Storage(int memory, int use)
+        public Storage()
         {
-            memory = rnd.Next(50, 200);
+            memory = 125;
             use = 0;
+            name = "Almacenamiento";
         }
-
         public override int NewMemory()
         {
-            memory += rnd.Next(50, 100);
+            memory += 125;
+            Console.WriteLine("La nueva memoria de alamcenamiento es: " + memory);
             return memory;
         }
+        static Random rnd = new Random();
         public override int NewUse()
         {
-            use += rnd.Next(0, 25);
-            return use;
+            use = rnd.Next(35, 45);
+            if (use >= memory)
+            {
+                Console.WriteLine("Se ha usado: " + memory + " de la memoria disponible de almacenamiento. Ahora queda: 0");
+                memory = 0;
+            }
+            else
+            {
+                memory -= use;
+                Console.WriteLine("Se ha usado: " + use + " de la memoria disponible de almacenamiento. Ahora queda: " + memory);
+            }
+            return memory;
         }
-
-        public void Store(int use)
+        public override int GetMemory()
         {
-            memory -= use;
+            return memory;
         }
     }
 }

@@ -8,25 +8,37 @@ namespace Lab4
 {
     class Reception:Machine
     {
-        static Random rnd = new Random();
-        public Reception(int memory, int use)
+        public Reception()
         {
-            memory = rnd.Next(50,200);
+            memory = 150;
             use = 0;
+            name = "Recepción de piezas";
         }
         public override int NewMemory()
         {
-            memory += rnd.Next(50, 100);
+            memory += 150;
+            Console.WriteLine("La nueva memoria de recepción es: " + memory);
             return memory;
         }
+        static Random rnd = new Random();
         public override int NewUse()
         {
-            use += rnd.Next(0, 25);
-            return use;
+            use = rnd.Next(20, 30);
+            if (use >= memory)
+            {
+                Console.WriteLine("Se ha usado: " + memory + " de la memoria disponible de recepción. Ahora queda: 0");
+                memory = 0;
+            }
+            else
+            {
+                memory -= use;
+                Console.WriteLine("Se ha usado: " + use + " de la memoria disponible de recepción. Ahora queda: " + memory);
+            }
+            return memory;
         }
-        public void Receive(int use)
+        public override int GetMemory()
         {
-            memory -= use;
+            return memory;
         }
     }
 }
